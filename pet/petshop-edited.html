@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پت شاپ | دنیای دوست‌داشتنی حیوانات</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: #faf8f3;
+    color: #514438;
+}
+
+header {
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 430px;
+    overflow: hidden;
+    background: #e9dfcf;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 8%;
+    background: linear-gradient(270deg, rgba(49,35,25,.65), transparent);
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: clamp(28px, 5vw, 55px);
+    font-weight: 900;
+    animation: slideIn 1s ease;
+}
+
+.hero-content p {
+    margin-top: 15px;
+    font-size: 17px;
+}
+
+.hero-content a {
+    margin-top: 25px;
+    padding: 13px 30px;
+    border-radius: 30px;
+    background: #fff;
+    color: #71583e;
+    text-decoration: none;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.hero-content a:hover {
+    background: #c9a77d;
+    color: white;
+    transform: translateY(-4px);
+}
+
+nav {
+    height: 75px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    box-shadow: 0 3px 15px #00000008;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    color: #9b7955;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #665747;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #bc9163;
+}
+
+.cart {
+    color: #987653;
+    font-size: 21px;
+}
+
+section {
+    padding: 65px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.section-title h2 {
+    font-size: 29px;
+    color: #74583d;
+    font-weight: 900;
+}
+
+.section-title p {
+    margin-top: 9px;
+    color: #a39280;
+    font-size: 14px;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 3px;
+    background: #c6a77f;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+/* ویژه */
+
+.special {
+    background: #eee5d8;
+    border-radius: 35px;
+    margin: 30px 5%;
+    padding: 55px 5%;
+    overflow: hidden;
+}
+
+.special .section-title h2 {
+    font-size: 34px;
+}
+
+.slider {
+    display: grid;
+    grid-template-columns: minmax(0, 620px);
+    justify-content: center;
+    gap: 25px;
+    overflow: hidden;
+}
+
+.slide {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px #6b51321a;
+    opacity: 0;
+    transform: translateX(35px);
+    transition: opacity .7s, transform .7s;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s;
+}
+
+.slide:hover img {
+    transform: scale(1.07);
+}
+
+.slide-info {
+    padding: 20px;
+    text-align: center;
+    font-weight: 700;
+    color: #765a3f;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.slider-controls button {
+    border: none;
+    background: #967453;
+    color: white;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.slider-controls button:hover {
+    background: #6e5035;
+    transform: scale(1.1);
+}
+
+/* محصولات */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 23px;
+}
+
+.product {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #00000008;
+    transition: .4s;
+    opacity: 0;
+    transform: translateY(35px);
+}
+
+.product.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product:hover {
+    transform: translateY(-9px);
+    box-shadow: 0 15px 30px #80674720;
+}
+
+.product img {
+    width: 100%;
+    height: 215px;
+    object-fit: cover;
+    display: block;
+    transition: .5s;
+}
+
+.product:hover img {
+    transform: scale(1.06);
+}
+
+.product-info {
+    padding: 17px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 15px;
+    color: #70563e;
+    margin-bottom: 12px;
+}
+
+.product-info button {
+    background: #a48765;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.product-info button:hover {
+    background: #6e5135;
+}
+
+/* فوتر */
+
+footer {
+    background: #5c4938;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer .social {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+footer i {
+    font-size: 20px;
+    color: #e8d5bc;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media(max-width:950px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width:650px) {
+    nav {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        height: 280px;
+    }
+
+    section {
+        padding: 45px 5%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 13px;
+    }
+
+    .product img {
+        height: 155px;
+    }
+
+    .special {
+        margin: 15px 3%;
+        padding: 35px 4%;
+    }
+
+    .slider {
+        grid-template-columns: 1fr;
+    }
+
+    .slide img {
+        height: 230px;
+    }
+}
+
+/* آیکون‌های شناور پس‌زمینه */
+.floating-icons {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    color: #b99a75;
+}
+.floating-icons i {
+    position: absolute;
+    opacity: .13;
+    animation: petFloat 9s ease-in-out infinite;
+}
+.floating-icons i:nth-child(1) { top: 12%; right: 5%; font-size: 34px; animation-delay: 0s; }
+.floating-icons i:nth-child(2) { top: 34%; left: 4%; font-size: 27px; animation-delay: 1.5s; }
+.floating-icons i:nth-child(3) { top: 58%; right: 8%; font-size: 42px; animation-delay: 3s; }
+.floating-icons i:nth-child(4) { top: 78%; left: 8%; font-size: 31px; animation-delay: 2s; }
+.floating-icons i:nth-child(5) { top: 20%; left: 19%; font-size: 23px; animation-delay: 4s; }
+.floating-icons i:nth-child(6) { top: 88%; right: 24%; font-size: 29px; animation-delay: 1s; }
+
+body > *:not(.floating-icons) {
+    position: relative;
+    z-index: 1;
+}
+
+.product, .slide {
+    cursor: pointer;
+}
+
+.product:focus-visible, .slide:focus-visible {
+    outline: 3px solid #b9956b;
+    outline-offset: 4px;
+}
+
+.product img, .slide img {
+    cursor: pointer;
+}
+
+/* پنجره جزئیات محصول */
+.product-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(43, 33, 24, .62);
+    backdrop-filter: blur(7px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease;
+}
+.product-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-card {
+    position: relative;
+    width: min(100%, 540px);
+    max-height: 90vh;
+    overflow: auto;
+    background: #fffdf9;
+    border: 1px solid #eadfce;
+    border-radius: 26px;
+    padding: 18px;
+    box-shadow: 0 25px 80px #24180f45;
+    transform: translateY(25px) scale(.96);
+    transition: .35s ease;
+}
+.product-modal.open .modal-card {
+    transform: translateY(0) scale(1);
+}
+.modal-close {
+    position: absolute;
+    top: 27px;
+    left: 27px;
+    z-index: 2;
+    width: 39px;
+    height: 39px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.94);
+    color: #6d533b;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 3px 12px #00000018;
+}
+.modal-image-wrap {
+    overflow: hidden;
+    border-radius: 19px;
+    background: #f1e9de;
+}
+.modal-image {
+    display: block;
+    width: 100%;
+    max-height: 360px;
+    min-height: 210px;
+    object-fit: contain;
+}
+.modal-details {
+    padding: 20px 8px 8px;
+    text-align: center;
+}
+.modal-details h3 {
+    color: #74583d;
+    font-size: 23px;
+    margin-bottom: 9px;
+}
+.modal-details p {
+    color: #9a8977;
+    font-size: 14px;
+    line-height: 2;
+}
+.modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 9px 15px;
+    border-radius: 30px;
+    background: #f1e8dc;
+    color: #876a4a;
+    font-size: 12px;
+}
+@keyframes petFloat {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(-24px) rotate(12deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .floating-icons i { animation: none; }
+    .product-modal, .modal-card { transition: none; }
+}
+
+
+/* پیام جایگزین برای عکسی که فایلش پیدا نشود */
+.image-missing {
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: #f1e9de;
+    color: #8b7358;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 14px;
+}
+.image-missing i { font-size: 30px; }
+
+
+.product-modal {
+    transition: opacity .38s ease, visibility .38s ease;
+}
+.modal-card {
+    transform: translateY(55px) scale(.88) rotateX(7deg);
+    transform-origin: center;
+    opacity: 0;
+    transition: transform .55s cubic-bezier(.2,.85,.25,1.2), opacity .35s ease;
+}
+.product-modal.open .modal-card {
+    transform: translateY(0) scale(1) rotateX(0);
+    opacity: 1;
+}
+.modal-image-wrap {
+    transform: scale(.94);
+    opacity: .7;
+    transition: transform .65s cubic-bezier(.2,.8,.2,1), opacity .45s ease .08s;
+}
+.product-modal.open .modal-image-wrap {
+    transform: scale(1);
+    opacity: 1;
+}
+.modal-image {
+    animation: none;
+}
+.product-modal.open .modal-image {
+    animation: modalImageReveal .75s cubic-bezier(.2,.8,.2,1) both;
+}
+.modal-details h3,
+.modal-details p,
+.modal-badge {
+    opacity: 0;
+    transform: translateY(14px);
+}
+.product-modal.open .modal-details h3 {
+    animation: modalTextReveal .45s ease .18s both;
+}
+.product-modal.open .modal-details p {
+    animation: modalTextReveal .45s ease .27s both;
+}
+.product-modal.open .modal-badge {
+    animation: modalTextReveal .45s ease .36s both;
+}
+@keyframes modalImageReveal {
+    from { transform: scale(.9); filter: blur(5px); }
+    to { transform: scale(1); filter: blur(0); }
+}
+@keyframes modalTextReveal {
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .modal-card, .modal-image-wrap, .modal-details h3,
+    .modal-details p, .modal-badge, .product-modal.open .modal-image {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+
+/* اتاقک اختصاصی محصولات با طراحی الهام‌گرفته از صفحه گیمینگ */
+.product-room-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(55,43,31,.72);backdrop-filter:blur(12px)}
+.product-room-modal.open{display:flex;animation:roomFade .25s ease both}
+.room-panel{position:relative;width:min(900px,100%);min-height:470px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:25px;padding:30px;border:1px solid #ffffffa8;border-radius:30px;background:linear-gradient(145deg,#fffdf9,#f4eadc);box-shadow:0 30px 90px #49352155;animation:roomPop .4s cubic-bezier(.2,.8,.2,1) both}
+.room-close{position:absolute;top:15px;left:15px;width:42px;height:42px;border:0;border-radius:14px;background:#f1e8dc;color:#987653;font-size:18px;cursor:pointer;z-index:2;transition:.25s}
+.room-close:hover{transform:rotate(90deg);background:#eadbc8}
+.room-image-stage{min-height:390px;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:24px;background:radial-gradient(circle,#f0e4d5 0,#fffdf9 65%,#f5eee5 100%)}
+.room-image-stage:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;background:#d8bd9b55;filter:blur(35px)}
+.room-image-stage img{position:relative;z-index:1;width:100%;height:390px;object-fit:contain;padding:22px;filter:drop-shadow(0 20px 22px #80674733);animation:roomImageIn .5s ease both}
+.room-info{padding:20px 12px}
+.room-label{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:30px;background:#f1e8dc;color:#987653;font-size:11px;font-weight:900}
+.room-info h2{font-size:clamp(24px,4vw,36px);color:#514438;margin:20px 0 10px}
+.room-info p{font-size:13px;line-height:2;color:#9a8977}
+.room-info .room-note{display:flex;align-items:center;gap:9px;margin:22px 0;padding:13px;border-radius:15px;background:#f8f2ea;color:#806b55;font-size:12px}
+.room-info .room-add{padding:12px 19px;font-size:13px;border:0;border-radius:12px;background:#a48765;color:white;cursor:pointer;font-family:inherit;font-weight:700;transition:.25s}
+.room-info .room-add:hover{background:#76583c;transform:translateY(-3px)}
+@keyframes roomFade{from{opacity:0}to{opacity:1}}
+@keyframes roomPop{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes roomImageIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.product{cursor:pointer}
+.product .room-hint{display:inline-flex;align-items:center;gap:6px;margin-top:9px;padding:7px 11px;border-radius:20px;background:#f5eee5;color:#987653;font-size:10px;font-weight:800}
+@media(max-width:650px){
+ .product-room-modal{padding:12px}
+ .room-panel{grid-template-columns:1fr;gap:12px;padding:18px;border-radius:23px;max-height:92vh;overflow:auto}
+ .room-image-stage{min-height:270px}
+ .room-image-stage img{height:270px;padding:15px}
+ .room-info{padding:8px 5px 12px;text-align:center}
+ .room-info h2{margin:12px 0 6px}
+ .room-info .room-note{justify-content:center;margin:13px 0}
+}
+
+
+/* اصلاح جایگاه اتاقک: همیشه روی کل صفحه باز شود، نه انتهای سایت */
+body > .product-room-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+body > .product-room-modal.open {
+    display: flex !important;
+}
+
+/* جلوه ویژه و متحرک برای بخش پک‌های ویژه */
+.special {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid #d7b987;
+    background:
+        radial-gradient(circle at 15% 15%, #fff7df 0, transparent 32%),
+        radial-gradient(circle at 85% 85%, #d8bd9b 0, transparent 34%),
+        linear-gradient(135deg, #f6ead7, #e8d6bd, #fff8ed);
+    box-shadow: 0 18px 55px #8b69412b, inset 0 0 35px #ffffff80;
+    animation: specialGlow 4s ease-in-out infinite;
+}
+.special::before,
+.special::after {
+    content: "✦";
+    position: absolute;
+    z-index: -1;
+    color: #b78b4e;
+    opacity: .35;
+    font-size: 42px;
+    animation: sparkleDrift 5s ease-in-out infinite;
+}
+.special::before { top: 22px; right: 5%; }
+.special::after { bottom: 25px; left: 6%; animation-delay: 1.7s; }
+.special .section-title h2 {
+    text-shadow: 0 3px 15px #c39b6540;
+    animation: crownShine 2.8s ease-in-out infinite;
+}
+.slide {
+    position: relative;
+    border: 1px solid #e4c99f;
+    box-shadow: 0 15px 38px #75532c25;
+    transition: opacity .7s, transform .7s, box-shadow .35s, border-color .35s;
+}
+.slide.active {
+    box-shadow: 0 22px 55px #98704438, 0 0 0 3px #fff8e9, 0 0 0 5px #c6a77f;
+    animation: packEntrance .75s cubic-bezier(.2,.8,.2,1) both;
+}
+.slide.active::after {
+    content: "پک ویژه ✨";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    background: linear-gradient(110deg, #9a713f, #d7b16f, #9a713f);
+    background-size: 200% 100%;
+    box-shadow: 0 5px 18px #51381d55;
+    animation: badgeShimmer 2.5s linear infinite;
+}
+.slide:hover {
+    border-color: #c6a16d;
+    box-shadow: 0 22px 50px #80603b35;
+}
+.slider-controls button {
+    box-shadow: 0 6px 18px #76563835;
+}
+@keyframes specialGlow {
+    0%,100% { box-shadow: 0 18px 55px #8b69412b, inset 0 0 35px #ffffff80; }
+    50% { box-shadow: 0 22px 65px #b18a553d, inset 0 0 48px #ffffffb0; }
+}
+@keyframes sparkleDrift {
+    0%,100% { transform: translateY(0) rotate(0) scale(.85); opacity: .2; }
+    50% { transform: translateY(-18px) rotate(35deg) scale(1.2); opacity: .65; }
+}
+@keyframes crownShine {
+    0%,100% { filter: drop-shadow(0 0 0 #d6b36c00); }
+    50% { filter: drop-shadow(0 0 10px #c79b554d); }
+}
+@keyframes packEntrance {
+    0% { filter: brightness(1.15); }
+    100% { filter: brightness(1); }
+}
+@keyframes badgeShimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .special, .special::before, .special::after,
+    .special .section-title h2, .slide.active,
+    .slide.active::after { animation: none !important; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating-icons" aria-hidden="true">
+    <i class="fa-solid fa-paw"></i>
+    <i class="fa-solid fa-bone"></i>
+    <i class="fa-solid fa-fish"></i>
+    <i class="fa-solid fa-cat"></i>
+    <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-dog"></i>
+</div>
+
+
+<nav>
+    <div class="logo">
+        <i class="fa-solid fa-paw"></i>
+        پت شاپ
+    </div>
+
+    <div class="nav-links">
+        <a href="#">صفحه اصلی</a>
+        <a href="#special">پک ویژه</a>
+        <a href="#beds">تخت و جای خواب</a>
+        <a href="#accessories">لوازم حیوانات</a>
+        <a href="#toys">وسایل بازی</a>
+    </div>
+
+    <div class="cart">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span id="cartCount">0</span>
+    </div>
+</nav>
+
+<header class="hero">
+    <img src="./img/head.jpg" alt="پت شاپ">
+    <div class="hero-content">
+        <h1>دنیای دوست‌داشتنی پت‌ها</h1>
+        <p>بهترین محصولات برای دوست‌های کوچولوی شما</p>
+        <a href="#special">مشاهده محصولات</a>
+    </div>
+</header>
+
+<section id="special" class="special">
+
+    <div class="section-title">
+        <h2><i class="fa-solid fa-crown"></i> پک‌های ویژه</h2>
+        <p>پیشنهادهای خاص برای دوست‌های پشمالوی شما</p>
+    </div>
+
+    <div class="slider" id="slider">
+        <div class="slide active">
+            <img src="./img/bh121.jpg" alt="پک ویژه اول">
+            <div class="slide-info">پک ویژه شماره یک</div>
+        </div>
+
+        <div class="slide">
+            <img src="./img/bh122.jpg" alt="پک ویژه دوم">
+            <div class="slide-info">پک ویژه شماره دو</div>
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button onclick="previousSlide()" aria-label="قبلی">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button onclick="nextSlide()" aria-label="بعدی">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+    </div>
+</section>
+
+<section id="beds">
+    <div class="section-title">
+        <h2><i class="fa-solid fa-couch"></i> تخت و جای خواب</h2>
+        <p>یک استراحت راحت برای کوچولوهای دوست‌داشتنی</p>
+    </div>
+
+    <div class="products">
+        <div class="product"><img src="./img/bed2.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bed3.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bed4.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bed5.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bed6.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bed7.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bed9.jpg" alt=""><div class="product-info"><h3>تخت و جای خواب</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+    </div>
+</section>
+
+<section id="accessories">
+    <div class="section-title">
+        <h2><i class="fa-solid fa-paw"></i> لوازم حیوانات</h2>
+        <p>هر چیزی که برای نگهداری بهتر نیاز دارید</p>
+    </div>
+
+    <div class="products">
+        <div class="product"><img src="./img/bh.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh1.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh3.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh4.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh5.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        
+        <div class="product"><img src="./img/bh7.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh8.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh9.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh11.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh12.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh13.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bh14.jpg" alt=""><div class="product-info"><h3>لوازم پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+    </div>
+</section>
+
+<section id="toys">
+    <div class="section-title">
+        <h2><i class="fa-solid fa-baseball"></i> وسایل بازی</h2>
+        <p>بازی، شادی و سرگرمی برای حیوانات خانگی</p>
+    </div>
+
+    <div class="products">
+        <div class="product"><img src="./img/bazi2.jpg" alt=""><div class="product-info"><h3>اسباب‌بازی پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+        <div class="product"><img src="./img/bazi.jpg" alt=""><div class="product-info"><h3>اسباب‌بازی پت</h3><button onclick="addCart()">افزودن به سبد</button></div></div>
+    </div>
+</section>
+
+
+
+<div class="product-room-modal" id="productRoom" aria-hidden="true">
+ <div class="room-panel" role="dialog" aria-modal="true" aria-labelledby="roomTitle">
+  <button class="room-close" id="roomClose" type="button" aria-label="بستن اتاقک"><i class="fa-solid fa-xmark"></i></button>
+  <div class="room-image-stage"><img id="roomImage" src="" alt=""></div>
+  <div class="room-info">
+   <span class="room-label"><i class="fa-solid fa-cube"></i> اتاقک اختصاصی محصول</span>
+   <h2 id="roomTitle">نام محصول</h2>
+   <p id="roomDescription">نمای کامل محصول انتخاب‌شده را در قاب اختصاصی مشاهده کن.</p>
+   <div class="room-note"><i class="fa-solid fa-expand"></i> نمایش تصویر کامل بدون برش</div>
+   <button class="room-add" id="roomAdd" type="button"><i class="fa-solid fa-cart-plus"></i> افزودن به سبد</button>
+  </div>
+ </div>
+</div>
+
+<footer>
+    <h2>پت شاپ | همراه مهربان کوچولوها</h2>
+    <p>تمام حقوق محفوظ است.</p>
+    <div class="social">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-telegram"></i>
+    </div>
+</footer>
+
+<script>
+// اسلایدر پک ویژه
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function showSlide() {
+    slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide();
+}
+
+function previousSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide();
+}
+
+setInterval(nextSlide, 3500);
+
+// انیمیشن محصولات هنگام اسکرول
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.product').forEach(product => {
+    observer.observe(product);
+});
+
+// سبد خرید نمایشی
+let cartCount = 0;
+
+function addCart() {
+    cartCount++;
+    document.getElementById('cartCount').textContent = cartCount;
+}
+
+
+// اتاقک اختصاصی با همان چیدمان سایت گیمینگ
+const productRoom = document.getElementById('productRoom');
+const roomImage = document.getElementById('roomImage');
+const roomTitle = document.getElementById('roomTitle');
+const roomClose = document.getElementById('roomClose');
+const roomAdd = document.getElementById('roomAdd');
+let selectedProductCard = null;
+
+function openProductRoom(card) {
+    const image = card.querySelector('img');
+    const titleNode = card.querySelector('.product-info h3, .slide-info');
+    if (!image) return;
+
+    selectedProductCard = card;
+    roomImage.src = image.currentSrc || image.src;
+    roomImage.alt = titleNode ? titleNode.textContent.trim() : 'محصول پت‌شاپ';
+    roomTitle.textContent = roomImage.alt;
+    productRoom.classList.remove('open');
+    void productRoom.offsetWidth;
+    productRoom.classList.add('open');
+    productRoom.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // اجرای دوباره انیمیشن تصویر در هر بار باز شدن اتاقک
+    roomImage.style.animation = 'none';
+    void roomImage.offsetWidth;
+    roomImage.style.animation = '';
+}
+
+function closeProductRoom() {
+    productRoom.classList.remove('open');
+    productRoom.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.product, .slide').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.addEventListener('click', event => {
+        if (event.target.closest('button')) return;
+        openProductRoom(card);
+    });
+    card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openProductRoom(card);
+        }
+    });
+});
+
+roomClose.addEventListener('click', closeProductRoom);
+productRoom.addEventListener('click', event => {
+    if (event.target === productRoom) closeProductRoom();
+});
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && productRoom.classList.contains('open')) closeProductRoom();
+});
+roomAdd.addEventListener('click', () => {
+    addCart();
+    roomAdd.innerHTML = '<i class="fa-solid fa-check"></i> به سبد اضافه شد';
+    setTimeout(() => {
+        roomAdd.innerHTML = '<i class="fa-solid fa-cart-plus"></i> افزودن به سبد';
+    }, 1200);
+});
+
+// اگر فایل عکسی وجود نداشت، مسیر آن را در همان جای عکس نشان بده.
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function () {
+        if (this.dataset.errorHandled) return;
+        this.dataset.errorHandled = 'true';
+        this.alt = 'عکس پیدا نشد: ' + this.getAttribute('src');
+        this.style.minHeight = '150px';
+        this.style.background = '#f1e8dc';
+        this.style.padding = '25px';
+        this.style.objectFit = 'contain';
+    });
+});
+
+</script>
+
+</body>
+</html>
